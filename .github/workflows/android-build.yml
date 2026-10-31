@@ -24,16 +24,20 @@ jobs:
 
       - name: Setup Android SDK
         uses: android-actions/setup-android@v3
+        with:
+          packages: 'tools platform-tools platforms;android-35 build-tools;35.0.0'
 
-      - name: Grant execute permission for gradlew
-        run: chmod +x gradlew || true
-
-      - name: Create Gradle Wrapper if missing
+      - name: Accept Android licenses
         run: |
-          if [ ! -f gradlew ]; then
-            gradle wrapper --gradle-version 8.9 || true
-          fi
-          chmod +x gradlew || true
+          yes | sdkmanager --licenses || true
+
+      - name: Install Gradle and create wrapper
+        run: |
+          curl -sL https://services.gradle.org/distributions/gradle-8.9-bin.zip -o /tmp/gradle.zip
+          unzip -q /tmp/gradle.zip -d /tmp
+          /tmp/gradle-8.9/bin/gradle wrapper --gradle-version 8.9
+          chmod +x gradlew
+          ls -la gradlew gradle/wrapper/
 
       - name: Cache Gradle
         uses: actions/cache@v4
@@ -46,23 +50,13 @@ jobs:
             ${{ runner.os }}-gradle-
 
       - name: Build Debug APK
-        run: |
-          if [ -f gradlew ]; then
-            ./gradlew assembleDebug --stacktrace
-          else
-            echo "gradlew still missing – installing wrapper via gradle"
-            curl -sL https://services.gradle.org/distributions/gradle-8.9-bin.zip -o /tmp/gradle.zip
-            unzip -q /tmp/gradle.zip -d /tmp
-            /tmp/gradle-8.9/bin/gradle wrapper --gradle-version 8.9
-            chmod +x gradlew
-            ./gradlew assembleDebug --stacktrace
-          fi
+        run: ./gradlew assembleDebug --stacktrace --no-daemon
 
       - name: Run unit tests
-        run: ./gradlew test --stacktrace || true
+        run: ./gradlew test --stacktrace --no-daemon || true
 
-      - name: Build Release APK (unsigned)
-        run: ./gradlew assembleRelease --stacktrace
+      - name: Build Release APK
+        run: ./gradlew assembleRelease --stacktrace --no-daemon
 
       - name: Upload Debug APK
         uses: actions/upload-artifact@v4
