@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">منظف الصور</string>
+    <string name="home">الرئيسية</string>
+    <string name="scan">فحص</string>
+    <string name="results">النتائج</string>
+    <string name="albums">الألبومات</string>
+    <string name="trash">سلة المحذوفات</string>
+    <string name="stats">الإحصائيات</string>
+    <string name="settings">الإعدادات</string>
+    <string name="total_photos">إجمالي الصور</string>
+    <string name="storage_used">المساحة المستخدمة</string>
+    <string name="exact_duplicates">صور متطابقة</string>
+    <string name="similar_photos">صور متشابهة</string>
+    <string name="in_trash">في السلة</string>
+    <string name="space_saved">المساحة الموفرة</string>
+    <string name="start_scan">بدء الفحص</string>
+    <string name="manage_albums">إدارة الألبومات</string>
+    <string name="open_trash">فتح السلة</string>
+    <string name="last_scan">آخر فحص</string>
+    <string name="keep">الاحتفاظ</string>
+    <string name="delete_suggested">مقترح للحذف</string>
+    <string name="undecided">غير محدد</string>
+    <string name="restore">استعادة</string>
+    <string name="delete_permanently">حذف نهائي</string>
+    <string name="empty_trash">إفراغ السلة</string>
+    <string name="confirm_delete">تأكيد الحذف</string>
+    <string name="cannot_delete_last">لا يمكن حذف آخر نسخة متبقية</string>
+    <string name="scan_in_progress">جاري الفحص…</string>
+    <string name="scan_paused">الفحص متوقف مؤقتًا</string>
+    <string name="scan_complete">اكتمل الفحص</string>
+    <string name="language">اللغة</string>
+    <string name="theme">المظهر</string>
+    <string name="dark_mode">الوضع الليلي</string>
+    <string name="light_mode">الوضع النهاري</string>
+    <string name="system_default">حسب النظام</string>
+    <string name="similarity_threshold">حد التشابه</string>
+    <string name="about">حول التطبيق</string>
+    <string name="version">الإصدار 1.0.0</string>
+    <string name="privacy_note">جميع المعالجة تتم محليًا على جهازك. لا يتم رفع أي صور.</string>
+</resources>
